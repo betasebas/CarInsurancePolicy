@@ -1,20 +1,25 @@
 ﻿using System;
-using Microsoft.AspNetCore.Authorization;
+using System.Collections.Generic;
 using System.Data;
-using Microsoft.AspNetCore.Mvc;
-using CarInsurancePolicyService.Services;
+using System.Linq;
+using System.Threading.Tasks;
 using CarInsurancePolicyContracts.Requests;
 using CarInsurancePolicyDomain.Exceptions;
+using CarInsurancePolicyService.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-namespace CarInsurancePolicyPresentation.V1.Controllers
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace CarInsurancePolicyApi.Controllers
 {
-    [Route("api/v1/[controller]/")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
+    [Route("api/v1/[controller]")]
+    [Authorize]
     public class InsurancePolicyController : ControllerBase
     {
         private readonly ICarInsuranceServices _carInsuranceServices;
-        
+
 
         public InsurancePolicyController(ICarInsuranceServices carInsuranceServices)
         {
@@ -32,18 +37,18 @@ namespace CarInsurancePolicyPresentation.V1.Controllers
             }
             catch (Exception ex)
             {
-                if(ex is BadRequestException)
+                if (ex is BadRequestException)
                 {
                     throw;
                 }
 
                 return BadRequest(ex.Message);
             }
-           
+
         }
 
         [HttpGet]
-        [Route("GetCarInsurancePolicy/{filter]")]
+        [Route("GetCarInsurancePolicy/{filter}")]
         public async Task<IActionResult> GetCarInsurancePolicy(string filter)
         {
             try
@@ -64,4 +69,3 @@ namespace CarInsurancePolicyPresentation.V1.Controllers
         }
     }
 }
-
