@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "330c7793-c17c-4906-ba5e-6d2e9e914fda",
+		"name": "TestPersonalSoft",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "1065530"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"UserName\": \"sebas\",\n  \"Password\": \"test\"\n  \n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:5001/api/v1/Login/LoginUser"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Insurence",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY1MDMyNzUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.iyJz9K4tQ7zAAVYJpQaKkQqQIbPcEdFMeSxIaYo4p_4"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6InNlYmFzIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE2NzY0ODUyMDAsImF1ZCI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEifQ.x21gDZ_A5WmLlaAqkIcf5PNzzuXW85oJ-ZKcSBXUQcs",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"policyNumber\": \"POL0002\",\n  \"clientName\": \"JUAN PABLO GOMEZ\",\n  \"clientIdentification\": \"6666666666\",\n  \"clientBirthdate\": \"2000-01-01\",\n  \"coveragePolicy\": \"Cubre total, danos, choques\",\n  \"maxValue\": 90000000,\n  \"policyName\": \"Cubre todo\",\n  \"city\": \"Medellin\",\n  \"direction\": \"Carrera 88 # 90 87\",\n  \"licensePlate\": \"YUT678\",\n  \"modelCar\": 2019,\n  \"haveInspection\": false\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://localhost:5001/api/v1/InsurancePolicy/SaveCarInsurancePolicy"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzY1MDMyNzUsImlzcyI6Imh0dHBzOi8vbG9jYWxob3N0OjUwMDEiLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxIn0.iyJz9K4tQ7zAAVYJpQaKkQqQIbPcEdFMeSxIaYo4p_4"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://localhost:5001/api/v1/InsurancePolicy/GetCarInsurancePolicy/6666666666"
+			},
+			"response": []
+		}
+	]
+}
